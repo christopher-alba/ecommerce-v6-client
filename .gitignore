@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 *storybook.log
+
+#hide .env file so render doesnt pick up on local configuration
+.env
