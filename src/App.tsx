@@ -19,7 +19,13 @@ function App() {
     if (isAuthenticated) {
       const accessToken = await getAccessTokenSilently();
       localStorage.setItem("accessToken", accessToken);
-      const response = await axiosInstance.post("/auth/client");
+      const response = await axiosInstance.post("/auth/client", {
+        userInfo: {
+          firstName: user?.given_name,
+          lastName: user?.family_name,
+          email: user?.email,
+        },
+      });
       alert(JSON.stringify(response));
     } else {
       localStorage.removeItem("accessToken");
