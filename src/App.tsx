@@ -24,9 +24,11 @@ function App() {
           firstName: user?.given_name,
           lastName: user?.family_name,
           email: user?.email,
+          sessionToken: localStorage.getItem("sessionToken"),
         },
       });
       alert(JSON.stringify(response));
+      localStorage.setItem("sessionToken", response.data.token);
     } else {
       localStorage.removeItem("accessToken");
     }
